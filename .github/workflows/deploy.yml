@@ -2,11 +2,6 @@ name: Publish Docker image
 on:
   push:
     branches: main
-  release:
-    types: [published]
-defaults:
-  run:
-   working-directory: ./src/sh-ci
 jobs:
   push_to_registry:
     name: Push Docker image to GitHub Packages
@@ -22,6 +17,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build the tagged Docker image
-        run: docker build . --file Dockerfile --tag arpan1323/test:v3
-      - name: Push the tagged Docker image
-        run: docker push arpan1323/test:v3
+        shell: pwsh
+        run: ci/docker-build.ps1
+
