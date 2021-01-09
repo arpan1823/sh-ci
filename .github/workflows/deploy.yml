@@ -22,6 +22,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build the tagged Docker image
-        run: docker build . --file Dockerfile --tag arpan1323/test:v2
+        run: docker build . --file Dockerfile --tag arpan1323/test:v3
       - name: Push the tagged Docker image
-        run: docker push arpan1323/test:v2
+        run: docker push arpan1323/test:v3
